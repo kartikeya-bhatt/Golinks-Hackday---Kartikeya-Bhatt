@@ -10,6 +10,7 @@ $forked = true;
 
 if($queries && array_key_exists('username', $queryParams)) {
     $user = $queryParams['username'];
+
 }
 else {
     header("HTTP/1.0 404 Not Found");
@@ -31,7 +32,7 @@ $ch = curl_init();
 $url = 'https://api.github.com/users/' . urlencode($user) . '/repos';
 
 $headers = [
-    "Authorization: Bearer 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",
+    "Authorization: Bearer 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",
     "Accept: application/vnd.github+json",
     "X-GitHub-Api-Version: 2022-11-28"
 ];
@@ -117,7 +118,8 @@ $payload = array(
     'average size' => $average_size,
     'languages' => $sorted_languages
 );
-$json = json_encode($payload);
-echo $json;
 
+$json = json_encode($payload);
+header('Content-Type: application/json');
+echo $json;
 
