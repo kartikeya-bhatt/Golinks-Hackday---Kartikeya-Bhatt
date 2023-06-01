@@ -4,6 +4,13 @@
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $parts = explode("/", $path);
 $queries = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
+
+$resource = $parts[2] ?? NULL;
+if($resource != "stats") {
+    header("{$_SERVER['SERVER PROTOCOL']} 404 Not Found");
+    exit;
+}
+
 parse_str($queries, $queryParams);
 $user = NULL;
 $forked = true;
@@ -32,7 +39,7 @@ $ch = curl_init();
 $url = 'https://api.github.com/users/' . urlencode($user) . '/repos';
 
 $headers = [
-    //"Authorization: Bearer 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",
+    "Authorization: Bearer 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",
     "Accept: application/vnd.github+json",
     "X-GitHub-Api-Version: 2022-11-28"
 ];
