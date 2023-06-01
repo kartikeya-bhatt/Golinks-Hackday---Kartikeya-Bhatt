@@ -32,7 +32,7 @@ $ch = curl_init();
 $url = 'https://api.github.com/users/' . urlencode($user) . '/repos';
 
 $headers = [
-    "Authorization: Bearer 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",
+    //"Authorization: Bearer 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",
     "Accept: application/vnd.github+json",
     "X-GitHub-Api-Version: 2022-11-28"
 ];
